@@ -4,7 +4,7 @@ body {
   align-items: center;
   justify-items: center;
   background: white;
-  background: url(../img/toy-store.jpg);
+  background: url(../img/rainbow-light-string.jpg);
   background-size: cover;
   overflow: hidden;
 }
@@ -14,7 +14,7 @@ canvas {
   border-radius: 10px;
   width: 800px;
   height: 500px;
-  background: white;
+  background: black;
 }
 
 canvas.shake {

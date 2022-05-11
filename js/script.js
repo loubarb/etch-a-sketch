@@ -10,13 +10,17 @@ console.log(xStartPoint, yStartPoint);
 
 ctx.linJoin = 'round';
 ctx.lineCap = 'round';
-ctx.lineWidth = 20;
+ctx.lineWidth = 30;
+let hue = 0;
+ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
 ctx.beginPath();
 ctx.moveTo(xStartPoint, yStartPoint);
 ctx.lineTo(xStartPoint, yStartPoint);
 ctx.stroke();
 
 function draw({key}) {
+  hue = hue + 5;
+  ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
   if (key === 'ArrowUp') {
     ctx.beginPath();
     ctx.moveTo(xStartPoint, yStartPoint);
@@ -40,15 +44,31 @@ function draw({key}) {
     ctx.moveTo(xStartPoint, yStartPoint);
     xStartPoint = xStartPoint + 10;
     ctx.lineTo(xStartPoint, yStartPoint);
-    ctx.stroke();
+    ctx.stroke(); 
   }
 }
 
 function handleKey(e) {
-  console.log(e.key);
   if (e.key === 'ArrowUp' || 'ArrowDown' || 'ArrowLeft' || 'ArrowRight') {
     draw({key: e.key});
   }
 }
 
-window.addEventListener('keydown', handleKey)
+function clearCanvas() {
+  canvas.classList.add('shake');
+  ctx.clearRect(0, 0, width, height);
+  canvas.addEventListener(
+    'animationend',
+    () => {
+      canvas.classList.remove('shake');
+    },
+    { once: true }
+  );
+  ctx.beginPath();
+  ctx.moveTo(xStartPoint, yStartPoint);
+  ctx.lineTo(xStartPoint, yStartPoint);
+  ctx.stroke();
+}
+
+window.addEventListener('keydown', handleKey);
+shakeButton.addEventListener('click', clearCanvas);
