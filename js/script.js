@@ -1,12 +1,12 @@
 const canvas = document.querySelector('#etch-a-sketch');
 const shakeButton = document.querySelector('.shake');
+const directionButton = document.querySelectorAll('button.direction');
 const ctx = canvas.getContext('2d');
 const width = canvas.width;
 const height = canvas.height;
 
 let xStartPoint = Math.floor(Math.random() * width);
 let yStartPoint = Math.floor(Math.random() * height);
-console.log(xStartPoint, yStartPoint);
 
 ctx.linJoin = 'round';
 ctx.lineCap = 'round';
@@ -53,6 +53,38 @@ function handleKey(e) {
     draw({key: e.key});
   }
 }
+
+directionButton[0].addEventListener('mousedown', function() {
+  ctx.beginPath();
+  ctx.moveTo(xStartPoint, yStartPoint);
+  yStartPoint = yStartPoint - 10;
+  ctx.lineTo(xStartPoint, yStartPoint);
+  ctx.stroke();
+});
+
+directionButton[1].addEventListener('click', function() {
+  ctx.beginPath();
+  ctx.moveTo(xStartPoint, yStartPoint);
+  yStartPoint = yStartPoint + 10;
+  ctx.lineTo(xStartPoint, yStartPoint);
+  ctx.stroke();
+});
+
+directionButton[2].addEventListener('click', function() {
+  ctx.beginPath();
+  ctx.moveTo(xStartPoint, yStartPoint);
+  xStartPoint = xStartPoint - 10;
+  ctx.lineTo(xStartPoint, yStartPoint);
+  ctx.stroke();
+});
+
+directionButton[3].addEventListener('click', function() {
+  ctx.beginPath();
+  ctx.moveTo(xStartPoint, yStartPoint);
+  xStartPoint = xStartPoint + 10;
+  ctx.lineTo(xStartPoint, yStartPoint);
+  ctx.stroke();
+});
 
 function clearCanvas() {
   canvas.classList.add('shake');
