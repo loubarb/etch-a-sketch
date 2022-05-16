@@ -55,6 +55,8 @@ function handleKey(e) {
 }
 
 directionButton[0].addEventListener('mousedown', function() {
+  hue = hue + 5;
+  ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
   ctx.beginPath();
   ctx.moveTo(xStartPoint, yStartPoint);
   yStartPoint = yStartPoint - 10;
@@ -63,6 +65,8 @@ directionButton[0].addEventListener('mousedown', function() {
 });
 
 directionButton[1].addEventListener('click', function() {
+  hue = hue + 5;
+  ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
   ctx.beginPath();
   ctx.moveTo(xStartPoint, yStartPoint);
   yStartPoint = yStartPoint + 10;
@@ -71,6 +75,8 @@ directionButton[1].addEventListener('click', function() {
 });
 
 directionButton[2].addEventListener('click', function() {
+  hue = hue + 5;
+  ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
   ctx.beginPath();
   ctx.moveTo(xStartPoint, yStartPoint);
   xStartPoint = xStartPoint - 10;
@@ -79,6 +85,8 @@ directionButton[2].addEventListener('click', function() {
 });
 
 directionButton[3].addEventListener('click', function() {
+  hue = hue + 5;
+  ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
   ctx.beginPath();
   ctx.moveTo(xStartPoint, yStartPoint);
   xStartPoint = xStartPoint + 10;
